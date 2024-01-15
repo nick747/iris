@@ -1,3 +1,5 @@
+import { cleanInput } from "./clean_input";
+
 /**
  * Detects the color value of a string
  * @param {string} s - The color value input
@@ -5,14 +7,15 @@
  */
 
 export const getType = (s: string): 'hex' | 'rgb' | 'invalid' => {
-  const hexRegex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
-  const hexWithoutHashRegex = /^[0-9a-fA-F]{3}|[0-9a-fA-F]{6}$/;
-  const rgbRegex = /^rgb\(\s*(\d{1,3}\s*,\s*){2}\s*\d{1,3}\s*\)$/;
-  const rgbWithoutParenthesesRegex = /^(\d{1,3}\s*,){2}\s*\d{1,3}$/;
+  s = s.trim();
+  const hexRegex = /^[0-9a-fA-F]{6}$/;
+  const rgbRegex = /^(\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b\s*,\s*\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b\s*,\s*\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)$/;
 
-  if (hexRegex.test(s) || hexWithoutHashRegex.test(s)) {
+  s = cleanInput(s);
+
+  if (hexRegex.test(s)) {
     return 'hex';
-  } else if (rgbRegex.test(s) || rgbWithoutParenthesesRegex.test(s)) {
+  } else if (rgbRegex.test(s)) {
     return 'rgb';
   } else {
     return 'invalid';

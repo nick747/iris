@@ -1,3 +1,4 @@
+import { cleanInput } from './clean_input';
 import { getType } from './get_type';
 
 /**
@@ -8,15 +9,15 @@ import { getType } from './get_type';
  */
 
 export const toHex = (s: string, outputType: 0 | 1 = 0): string => {
+  s = s.trim();
+  s = cleanInput(s);
   const colorType = getType(s);
 
   if (colorType === 'hex') {
     return s;
   } else if (colorType === 'rgb') {
-    const isRGBWithParentheses = s.startsWith('rgb(') && s.endsWith(')');
-    
-    const rgbValues = isRGBWithParentheses ? s.slice(4, -1) : s;
-    
+    const rgbValues = s;
+
     const rgbValuesArray = rgbValues
       .replace(/\s/g, '')
       .split(',')

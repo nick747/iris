@@ -1,3 +1,4 @@
+import { cleanInput } from './clean_input';
 import { getType } from './get_type';
 
 /**
@@ -8,6 +9,8 @@ import { getType } from './get_type';
  */
 
 export const toRgb = (s: string, outputType: 0 | 1 | 2 = 0): string | number[] => {
+  s = s.trim();
+  s = cleanInput(s);
   const colorType = getType(s);
 
   if (colorType === 'rgb') {
@@ -18,7 +21,7 @@ export const toRgb = (s: string, outputType: 0 | 1 | 2 = 0): string | number[] =
 
     return outputType === 1 ? `rgb(${rgbValues.join(', ')})` : outputType === 2 ? rgbValues : rgbValues.join(', ');
   } else if (colorType === 'hex') {
-    const hex = s.replace(/^#/, '');
+    const hex = s;
 
     if (hex.length === 3) {
       const fullHex = hex
