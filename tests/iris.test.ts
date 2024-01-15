@@ -40,4 +40,12 @@ describe('Iris Tests', () => {
     const result = iris.toRgb('#ff0000', 1);
     expect(result).toBe('rgb(255, 0, 0)');
   });
+
+  test('randomColor should generate a random hex color', () => {
+    const result = iris.randomColor('hex');
+  });
+
+  test('randomColor should generate a random rgb color', () => {
+    const result = iris.randomColor('rgb');
+  });
 });
