@@ -48,4 +48,14 @@ describe('Iris Tests', () => {
   test('randomColor should generate a random rgb color', () => {
     const result = iris.randomColor('rgb');
   });
+
+  test('findComplementary should return the complementary of this color', () => {
+    const result = iris.findComplementary('#ff0000');
+    expect(result).toBe('#00ffff');
+  });
+
+  test('findComplementary should return the complementary of this color', () => {
+    const result = iris.findComplementary('255, 0, 0');
+    expect(result).toBe('rgb(0, 255, 255)');
+  });
 });
