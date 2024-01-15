@@ -1,8 +1,13 @@
 import { getType } from './get_type';
 
-/* Convert an RGB color to a HEX one */
+/**
+ * Converts a RGB color to a HEX one
+ * @param {string} s - The color value input
+ * @param {number} [outputType=0] - The type of the output, either with the '#' or not
+ * @returns {string} The HEX value of the color, either with the '#' prefix or not (based on the function's param.)
+ */
 
-export const toHex = (s: string): string => {
+export const toHex = (s: string, outputType: 0 | 1 = 0): string => {
   const colorType = getType(s);
 
   if (colorType === 'hex') {
@@ -21,7 +26,7 @@ export const toHex = (s: string): string => {
         })
         .join('');
 
-      return `#${hex}`;
+      return (outputType == 0) ? `#${hex}` : hex;
     } else {
       throw new Error('Invalid RGB color format');
     }

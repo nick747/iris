@@ -1,6 +1,11 @@
 import { getType } from './get_type';
 
-/* Convert an HEX color to a RGB one */
+/**
+ * Converts a HEX color to a RGB one
+ * @param {string} s - The color value input
+ * @param {number} [outputType=0] - The type of the output, 'rgb(r, g, b)', 'r, g, b', [r, g, b]
+ * @returns {string} The RGB value of the color
+ */
 
 export const toRgb = (s: string, outputType: 0 | 1 | 2 = 0): string | number[] => {
   const colorType = getType(s);

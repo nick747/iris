@@ -1,4 +1,8 @@
-// returns if the input is an hex one or a RGB one
+/**
+ * Detects the color value of a string
+ * @param {string} s - The color value input
+ * @returns {string} the value: 'hex', 'rgb', 'invalid' if nothing matches
+ */
 
 export const getType = (s: string): 'hex' | 'rgb' | 'invalid' => {
   const hexRegex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
