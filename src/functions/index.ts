@@ -3,3 +3,4 @@ export * from './to_hex';
 export * from './to_rgb';
 export * from './random';
 export * from './complementary';
+export * from './add_opacity';
